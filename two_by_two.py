@@ -9,15 +9,9 @@ Options:
     -h, --help        Show this page
     --list
     --host=host
-    --debug
-    --verbose
 """
-from docopt import docopt
-import logging
 import sys
 import json
-
-logger = logging.getLogger('two_by_two')
 
 
 def natural_numbers():
@@ -30,13 +24,13 @@ def natural_numbers():
 def main(args=None):
     if args is None:
         args = sys.argv[1:]
-    parsed_args = docopt(__doc__, args)
-    if parsed_args['--debug']:
-        logging.basicConfig(level=logging.DEBUG)
-    elif parsed_args['--verbose']:
-        logging.basicConfig(level=logging.INFO)
-    else:
-        logging.basicConfig(level=logging.WARNING)
+    if '-h' in args:
+        print (__doc__)
+        return 1
+
+    if '--host' in args:
+        print ("--host not supported")
+        return 1
 
     data = {'_meta': {'hostvars': {}}}
     devices = ['Switch1',
