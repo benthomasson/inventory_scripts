@@ -3,7 +3,7 @@
 
 """
 Usage:
-    leaf_spine [options]
+    leaf_spine_with_hosts_10000 [options]
 
 Options:
     -h, --help        Show this page
@@ -13,12 +13,12 @@ Options:
 import sys
 import json
 
+
 def natural_numbers():
     i = 0
     while True:
         yield i
         i += 1
-
 
 def main(args=None):
     if args is None:
@@ -34,11 +34,8 @@ def main(args=None):
     data = {'_meta': {'hostvars': {}}}
     leaves = ['Leaf{0}'.format(x) for x in range(48)]
     spines = ['Spine{0}'.format(x) for x in range(4)]
-    #hosts = ['Host{0}-{1}'.format(x, y) for x in range(24) for y in range(44)]
-    #hosts_per_leaf = {'Leaf{0}'.format(x): ['Host{0}-{1}'.format(x / 2, y) for y in range(44)] for x in range(48)}
-
-    hosts = []
-    hosts_per_leaf = {'Leaf{0}'.format(x): [] for x in range(48)}
+    hosts = ['Host{0}-{1}'.format(x, y) for x in range(24) for y in range(440)]
+    hosts_per_leaf = {'Leaf{0}'.format(x): ['Host{0}-{1}'.format(x / 2, y) for y in range(440)] for x in range(48)}
 
     switches = []
     switches.extend(leaves)
@@ -85,3 +82,5 @@ def main(args=None):
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv[1:]))
+
+
