@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
+Creates a Clos leaf-spine topology.
+
 Usage:
     leaf_spine [options]
 

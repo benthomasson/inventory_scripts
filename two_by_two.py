@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
+Creates a topology of 4 switches.
+
 Usage:
     two_by_two [options]
 

@@ -12,6 +12,7 @@ Options:
     --list
     --host=host
 """
+import os
 import sys
 import json
 from random import randint
@@ -36,11 +37,12 @@ def main(args=None):
         return 1
 
     data = {'_meta': {'hostvars': {}}}
-    n = randint(1, 50)
+    n = os.environ.get('n', 2)
     devices = ['Switch{0}'.format(x) for x in range(n)]
 
     device_interface_seqs = {name: natural_numbers() for name in devices}
     all_links = set()
+    m = os.environ.get('m', 2)
 
     for name in devices:
         links = []
@@ -50,8 +52,6 @@ def main(args=None):
             if (remote_device, name) in all_links:
                 continue
             if name == remote_device:
-                continue
-            if randint(0,1) == 1:
                 continue
             links.append({'name': 'eth{0}'.format(next(device_interface_seqs[name])),
                           'remote_device_name': remote_device,

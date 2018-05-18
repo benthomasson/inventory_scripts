@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
+Creates a Clos leaf-spine topology with hosts attached to the leaves.
+
 Usage:
     leaf_spine_with_hosts [options]
 
