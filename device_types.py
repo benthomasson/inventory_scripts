@@ -55,7 +55,7 @@ def main(args=None):
                           })
             all_links.add((name, remote_device))
             all_links.add((remote_device, name))
-        host_data = {'ansible_topology': {'type': "switch", 'links': links}}
+        host_data = {'ansible_topology': {'type': name[:-1].lower(), 'links': links}}
         data['_meta']['hostvars'][name] = host_data
 
     data['switches'] = ['Switch1']
